@@ -5,7 +5,5 @@ describe('Login', () => {
     const options = { cacheSession: false }
 
     cy.login(user, password, options)
-
-    cy.get('.qa-user-avatar').should('be.visible')
   })
 })
