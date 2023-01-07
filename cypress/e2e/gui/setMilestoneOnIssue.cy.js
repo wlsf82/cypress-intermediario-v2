@@ -18,7 +18,7 @@ describe('Set milestone on issue', options, () => {
 
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
     cy.api_createIssue(issue)
       .then(response => {
         cy.api_createMilestone(response.body.project_id, milestone)
