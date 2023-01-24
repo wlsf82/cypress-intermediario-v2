@@ -11,7 +11,7 @@ Cypress.Commands.add('gui_login', (
   cy.get('.qa-user-avatar').should('be.visible')
 })
 
-Cypress.Commands.add('logout', () => {
+Cypress.Commands.add('gui_logout', () => {
   cy.get('.qa-user-avatar').click()
   cy.contains('Sign out').click()
 })
