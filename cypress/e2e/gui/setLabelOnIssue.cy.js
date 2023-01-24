@@ -19,7 +19,7 @@ describe('Set label on issue', options, () => {
 
   beforeEach(() => {
     cy.api_deleteProjects()
-    cy.login()
+    cy.sessionLogin()
     cy.api_createIssue(issue)
       .then(response => {
         cy.api_createLabel(response.body.project_id, label)

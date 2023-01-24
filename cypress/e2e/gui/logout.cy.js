@@ -1,11 +1,11 @@
 describe('Logout', () => {
   beforeEach(() => {
-    cy.login()
+    cy.sessionLogin()
     cy.visit('/')
   })
 
   it('successfully', () => {
-    cy.logout()
+    cy.gui_logout()
 
     cy.url().should('be.equal', `${Cypress.config('baseUrl')}/users/sign_in`)
   })
