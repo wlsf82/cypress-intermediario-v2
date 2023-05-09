@@ -1,4 +1,4 @@
-# Testes automatizados com Cypress - Intermdiário
+# Testes automatizados com Cypress - Intermediário
 
 👋 Seja bem-vinda(o)!
 
