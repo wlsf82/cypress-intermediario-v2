@@ -12,3 +12,8 @@ Cypress.Commands.add('login', (
 
   login()
 })
+
+Cypress.Commands.add('logout', () => {
+  cy.get('[data-qa-selector="user_menu"]').click();
+  cy.contains('Sign out').click();
+});
