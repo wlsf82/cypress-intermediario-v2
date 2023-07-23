@@ -6,16 +6,17 @@ describe('Testa as funcionalidades de login e logout', () => {
       .should('be.visible');
   });
 
-  it.only('é possível deslogar com sucesso', () => {
+  it('é possível deslogar com sucesso', () => {
     cy.viewport(1920, 1080)
     cy.login();
-    cy.get('[data-qa-selector="user_menu"]')
-      .should('be.visible')
-      .click();
-    cy.get('[data-qa-selector="sign_out_link"]')
-      .should('be.visible')
-      .click();
+    cy.logout();
+
     cy.get('[data-qa-selector="sign_in_button"]')
-      .should('be.visible');
+    .should('be.visible');
+
+    // outra maneira de verificar se houve logout é por meio da url.
+
+    cy.url()
+      .should('be.equal', `${Cypress.config('baseUrl')}/users/sign_in`)
   });
 })
