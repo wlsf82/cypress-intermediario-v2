@@ -1,7 +1,8 @@
 describe('Testa a página de login', () => {
   it('passes', () => {
     cy.login();
-    cy.get('h2.gl-font-size-h1[data-qa-selector="welcome_title_content"]')
+    cy.get('.gl-font-size-h1')
+      .contains('Welcome to GitLab')
       .should('be.visible');
 
   })
