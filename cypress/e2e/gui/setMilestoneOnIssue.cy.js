@@ -29,6 +29,7 @@ describe('Set milestone on issue', options, () => {
   it('successfully', () => {
     cy.gui_setMilestoneOnIssue(milestone)
 
-    cy.get('.block.milestone').should('contain', milestone.title)
+    cy.get('[data-qa-selector="milestone_block"]')
+      .should('contain', milestone.title)
   })
 })

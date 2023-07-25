@@ -30,8 +30,13 @@ describe('Set label on issue', options, () => {
   it('successfully', () => {
     cy.gui_setLabelOnIssue(label)
 
-    cy.get('.qa-labels-block').should('contain', label.name)
-    cy.get('.qa-labels-block span')
-      .should('have.attr', 'style', `background-color: ${label.color}; color: #333333;`)
+    cy.contains('[data-qa-selector="labels_block"]', label.name)
+      .should('be.visible')
+    cy.get('[data-qa-selector="selected_label_content"]')
+      .should(
+        'have.attr',
+        'style',
+        `--label-background-color:${label.color}; --label-inset-border:inset 0 0 0 2px ${label.color};`
+      )
   })
 })
