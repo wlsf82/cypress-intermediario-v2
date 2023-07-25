@@ -43,3 +43,11 @@ Cypress.Commands.add('gui_createProject', project => {
   cy.get('.custom-control-input').first().check();
   cy.contains('Create project').click();
 })
+
+Cypress.Commands.add('gui_createIssue', issue => {
+  cy.visit('root/project-022039dd-da1a-4e18-97f5-5a5216f4c94e');
+  cy.get('a').contains('Issues').should('be.visible').click();
+  cy.get('.gl-button-text').contains('New issue').should('be.visible').click();
+  cy.get('#issue_title').should('be.visible').type(issue.name);
+  cy.get('.gl-button-text').contains('Create issue').should('be.visible').click();
+});
