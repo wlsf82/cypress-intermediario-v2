@@ -1,9 +1,12 @@
-//Test Case
+//Test Case for Login on GitLab application
 describe('Login', () => {
-  //Function - Succesfull Login
   it('successfully', () => {
-    cy.login();//personalized command
+    const user = Cypress.env('user_name')
+    const password = Cypress.env('user_password')
+    const options = { cacheSession: false }
 
-    cy.get('.qa-user-avatar').should('be.visible');
-  });
+    cy.login(user, password, options)
+
+    cy.get('.qa-user-avatar').should('be.visible')
+  })
 }); //End describe
