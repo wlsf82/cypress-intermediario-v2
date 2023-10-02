@@ -6,7 +6,6 @@
   "scripts": {
     "test": "cypress run",
     "cy:open": "cypress open"
-    
   },
   "repository": {
     "type": "git",
