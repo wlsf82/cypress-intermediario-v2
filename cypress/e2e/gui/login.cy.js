@@ -7,6 +7,6 @@ describe('Login', () => {
 
     cy.login(user, password, options)
 
-    cy.get('.qa-user-avatar').should('be.visible')
+    cy.get('.gl-avatar-circle').should('be.visible')
   })
 }); //End describe

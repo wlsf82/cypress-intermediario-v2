@@ -37,23 +37,25 @@ Cypress.Commands.add(
 );
 //for commands customized - Logout
 Cypress.Commands.add('logout', () => {
-  cy.get('.qa-user-avatar').click();
+  cy.get('.gl-avatar-circle').click();
   cy.contains('Sign out').click();
 });
 
 //for commands customized - New Project
 Cypress.Commands.add('gui_createProject', (project) => {
   cy.visit('/projects/new');
+  cy.contains('Create blank project').click();
   cy.get('#project_name').type(project.name);
-  cy.get('#project_description').type(project.description);
-  cy.get('.qa-initialize-with-readme-checkbox').check();
+  cy.get('#blank-project-name [data-testid="select-namespace-dropdown"]').click();
+  cy.contains('p', Cypress.env('user_name')).click()
+  cy.get('#project_initialize_with_readme').check();
   cy.contains('Create project').click();
 });
 
-//for commands customized - New Issueǥ
+//for commands customized - New Issue
 Cypress.Commands.add('gui_createIssue', (issue) => {
   cy.visit(`/${Cypress.env('user_name')}/${issue.project.name}/issues/new`);
-  cy.get('.qa-issuable-form-title').type(issue.title);
-  cy.get('.qa-issuable-form-description').type(issue.description);
-  cy.contains('Submit issue').click();
+  cy.get('#issue_title').type(issue.title);
+  cy.get('#issue_description').type(issue.description);
+  cy.contains('Create issue').click();
 });

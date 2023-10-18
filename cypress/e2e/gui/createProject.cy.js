@@ -23,6 +23,6 @@ describe('Create Project', options, () => {
       `${Cypress.config('baseUrl')}/${Cypress.env('user_name')}/${project.name}`
     );
     cy.contains(project.name).should('be.visible');
-    cy.contains(project.description).should('be.visible');
+    //cy.contains(project.description).should('be.visible');
   });
 });
