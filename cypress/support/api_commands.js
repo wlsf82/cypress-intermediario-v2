@@ -44,4 +44,16 @@ Cypress.Commands.add('api_getAllProjects', () => {//Get all projects created bef
           headers: { Authorization: accessToken },
         })
     })
+
+    Cypress.Commands.add('api_createLabel', (projectId, label) => {
+      cy.request({
+        method: 'POST',
+        url: `/api/v4/projects/${projectId}/labels`,
+        body: {
+          name: label.name,
+          color: label.color
+        },
+        headers: { Authorization: accessToken },
+      })
+    })
   })

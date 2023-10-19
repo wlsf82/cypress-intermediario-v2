@@ -59,3 +59,12 @@ Cypress.Commands.add('gui_createIssue', (issue) => {
   cy.get('#issue_description').type(issue.description);
   cy.contains('Create issue').click();
 });
+
+//for commands customized - setLabel
+Cypress.Commands.add('gui_setLabelOnIssue', label => {
+  cy.get('[data-qa-selector="labels_block"]')
+  .find('[data-testid="edit-button"]')
+  .click();
+  cy.contains(label.name).click()
+  cy.get('body').click();
+})
