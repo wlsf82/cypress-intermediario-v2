@@ -46,8 +46,10 @@ Cypress.Commands.add('gui_createProject', (project) => {
   cy.visit('/projects/new');
   cy.contains('Create blank project').click();
   cy.get('#project_name').type(project.name);
-  cy.get('#blank-project-name [data-testid="select-namespace-dropdown"]').click();
-  cy.contains('p', Cypress.env('user_name')).click()
+  cy.get(
+    '#blank-project-name [data-testid="select-namespace-dropdown"]'
+  ).click();
+  cy.contains('p', Cypress.env('user_name')).click();
   cy.get('#project_initialize_with_readme').check();
   cy.contains('Create project').click();
 });
@@ -61,10 +63,16 @@ Cypress.Commands.add('gui_createIssue', (issue) => {
 });
 
 //for commands customized - setLabel
-Cypress.Commands.add('gui_setLabelOnIssue', label => {
+Cypress.Commands.add('gui_setLabelOnIssue', (label) => {
   cy.get('[data-qa-selector="labels_block"]')
-  .find('[data-testid="edit-button"]')
-  .click();
-  cy.contains(label.name).click()
+    .find('[data-testid="edit-button"]')
+    .click();
+  cy.contains(label.name).click();
   cy.get('body').click();
-})
+});
+
+Cypress.Commands.add('gui_setMilestoneOnIssue', (milestone) => {
+  cy.get('[data-qa-selector="milestone_block"]')
+    .find('[data-testid="edit-button"]').click();
+  cy.contains('[data-testid="milestone-items"]', milestone.title).click();
+});
